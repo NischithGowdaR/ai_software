@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
+import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import ConnectRepo from './pages/ConnectRepo';
 import CodeExplorer from './pages/CodeExplorer';
@@ -63,12 +64,15 @@ export default function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Landing Route */}
+        <Route path="/" element={<Landing />} />
+
         {/* Auth Route */}
         <Route path="/login" element={<Login />} />
 
         {/* Protected Developer Cockpit Routes */}
         <Route 
-          path="/" 
+          path="/dashboard" 
           element={
             <ProtectedRoute>
               <MainLayout currentRepo={currentRepo} onDisconnectRepo={handleDisconnectRepo}>

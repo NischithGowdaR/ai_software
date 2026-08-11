@@ -25,7 +25,7 @@ export default function Login() {
         // Fetch current user details
         const meRes = await api.get('/auth/me');
         localStorage.setItem('user', JSON.stringify(meRes.data));
-        navigate('/');
+        navigate('/dashboard');
       } else {
         // Register
         await api.post('/auth/register', { email, password });
@@ -35,7 +35,7 @@ export default function Login() {
         
         const meRes = await api.get('/auth/me');
         localStorage.setItem('user', JSON.stringify(meRes.data));
-        navigate('/');
+        navigate('/dashboard');
       }
     } catch (err) {
       console.error(err);

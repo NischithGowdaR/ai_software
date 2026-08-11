@@ -79,7 +79,7 @@ export default function Sidebar({ currentRepo, onDisconnectRepo }) {
         )}
 
         <nav>
-          <NavLink to="/" className={({ isActive }) => `sidebar-nav-link ${isActive ? 'active' : ''}`}>
+          <NavLink to="/dashboard" className={({ isActive }) => `sidebar-nav-link ${isActive ? 'active' : ''}`}>
             <LayoutDashboard size={18} />
             <span>Dashboard</span>
           </NavLink>
