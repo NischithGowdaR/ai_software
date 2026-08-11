@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // Set VITE_API_URL in Vercel to the public URL of the Render API.
-// The local fallback keeps `npm run dev` working without extra setup.
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// The local fallback keeps `npm run dev` working, while the deployed frontend
+// defaults to the known Render backend URL if no env var is set.
+const API_URL = import.meta.env.VITE_API_URL || 'https://ai-software-3.onrender.com';
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,
