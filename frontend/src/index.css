@@ -71,10 +71,60 @@ code, pre {
 }
 
 @media (max-width: 991.98px) {
+  .app-container {
+    padding-top: 60px;
+  }
   .main-content {
     margin-left: 0;
     padding: 16px;
+    width: 100%;
   }
+}
+
+/* Mobile Header Bar & Drawer Backdrop */
+.mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(11, 15, 25, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1050;
+}
+
+.mobile-toggle-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-cyan);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1090;
 }
 
 /* Glassmorphism Panel styles */
@@ -103,21 +153,34 @@ code, pre {
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
 }
 
-/* Sidebar navigation */
 .sidebar-panel {
   width: 260px;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(11, 15, 25, 0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-light);
   padding: 24px 16px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 991.98px) {
+  .sidebar-panel {
+    transform: translateX(-100%);
+    z-index: 1100;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
+  }
+  .sidebar-panel.mobile-open {
+    transform: translateX(0);
+  }
 }
 
 .sidebar-brand {
